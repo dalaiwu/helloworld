@@ -4,8 +4,10 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 # Install IIS
 RUN powershell -Command Add-WindowsFeature Web-Server
 
+WORKDIR /inetpub/wwwroot
+
 # Copy the index.html file to the container
-COPY index.html C:\inetpub\wwwroot\index.html
+COPY index.html .
 
 # Expose port 80 for HTTP traffic
 EXPOSE 80
